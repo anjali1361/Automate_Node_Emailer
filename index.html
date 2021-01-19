@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+   /* Make the image fully responsive */
+ .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
+  *{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Josefin Sans', sans-serif;;
+  }
+/* side social part */
+  .social{
+	position: fixed;
+	top:50%;
+	right:0px;
+	transform:translateY(-50%);
+}
+.social a{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width:50px;
+	height:50px;
+	margin:0px;
+	padding: 0px;
+	line-height:0px;
+	background-color:#FFFFFF;
+	border:1px solid #CBCBCB;
+	box-shadow:2px 2px 12px rgba(0,0,0,0.2);
+}
+.social a:hover{
+	background-color:#000000;
+	transition:all ease 0.5s;
+}
+.social i{
+	font-size:20px;
+	color:#2B2B2B;
+}
+</style>
+
+</head>
+<body>
+    <div>
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="#">Java Course Registration</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          </div>
+        </nav>
+      </header>
+<section class="text-center" style="margin-top: 250px;">
+      <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Proceed To Registration
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Signup</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="form-group">
+            <label for="email" class="d-flex">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="subject" class="d-flex">Subject:</label>
+            <input type="text" class="form-control" id="subject" placeholder="Subject of Registration" name="subject" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="text" class="d-flex">Description:</label>
+            <input type="text" class="form-control" id="text" placeholder="Why you want to join this course" name="text" autocomplete="off">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+       <input type="submit" value="Submit" class="btn btn-primary">
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+    <!--contct part-->
+    <!--social-attach-bar-->
+    <div class="social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+  </div>
+  <!--contact end-->
+
+    <!--footer part-->
+  <footer class="fixed-bottom">
+    <p class="text-center bg-dark text-white">@copyright Sujeet Srivastava 2021 java course</p>
+  </footer>
+  <!--footer end-->
+</body>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- font awesome -->
+<script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  //getting value from form one by one
+  $('form').on('submit',(e)=>{
+      e.preventDefault();
+      const subject = $('#subject').val().trim();
+      const email = $('#email').val().trim();
+      const text = $('#text').val().trim();
+     
+      const data ={
+          subject,
+          email,
+          text
+
+      };
+
+      //sending data to server i.e. inside post request in service.js file as a request
+      $.post('/email',data,function(){
+          console.log('Server received our data');
+      })
+      
+  })
+</script>
+</html>
